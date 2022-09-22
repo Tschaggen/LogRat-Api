@@ -4,8 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48809d75bae86e25d9718afade8e07e9",
+    "content-hash": "6b51cfdbbd9e71837fb10e27c16573bd",
     "packages": [
+        {
+            "name": "lograt/core",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "./localrepo/LogRat-Core",
+                "reference": "d3c430bc20492e2c97baeff08b8f9c2c65ccde2c"
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-iconv": "*",
+                "php": ">=8.1",
+                "symfony/console": "6.1.*",
+                "symfony/event-dispatcher": "6.1.*",
+                "symfony/flex": "^2",
+                "symfony/framework-bundle": "6.1.*",
+                "symfony/runtime": "6.1.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "LogRat\\Core\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chuck Glogowski",
+                    "email": "cglogowski@viosys.com"
+                }
+            ],
+            "description": "Core Bundle For LogRat",
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "psr/cache",
             "version": "3.0.0",

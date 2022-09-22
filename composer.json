@@ -1,6 +1,13 @@
 {
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./localrepo/LogRat-Core"
+        }
+    ],
+
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
@@ -9,12 +16,12 @@
         "ext-iconv": "*",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
+        "symfony/event-dispatcher": "6.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*"
-    },
-    "require-dev": {
+        "symfony/yaml": "6.1.*",
+        "lograt/core":"1.0.0"
     },
     "config": {
         "allow-plugins": {
