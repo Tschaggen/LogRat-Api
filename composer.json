@@ -1,8 +1,8 @@
 {
     "repositories": [
         {
-            "type": "path",
-            "url": "./localrepo/LogRat-Core"
+            "type": "vcs",
+            "url": "https://github.com/Tschaggen/LogRat-Core.git"
         }
     ],
 
@@ -14,14 +14,18 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.13",
+        "lograt/core": "dev-master",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/event-dispatcher": "6.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.1.*",
+        "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*",
-        "lograt/core":"1.0.0"
+        "symfony/yaml": "6.1.*"
     },
     "config": {
         "allow-plugins": {
@@ -40,11 +44,7 @@
             "App\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
+
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
@@ -74,5 +74,8 @@
             "allow-contrib": false,
             "require": "6.1.*"
         }
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.45"
     }
 }
