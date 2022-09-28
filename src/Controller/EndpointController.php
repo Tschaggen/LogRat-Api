@@ -19,7 +19,7 @@ class EndpointController extends AbstractController {
         $registerModuleEvent = new RegisterEndpointEvent($moduleRegistry);
         $eventDispatcher->dispatch($registerModuleEvent, RegisterModuleEvent::NAME);
 
-        $registerEndpointEvent = new RegisterEndpointEvent($endpointRegistry;
+        $registerEndpointEvent = new RegisterEndpointEvent($endpointRegistry);
         $eventDispatcher->dispatch($registerEndpointEvent, RegisterEndpointEvent::NAME);
 
         $response = null;
@@ -32,7 +32,7 @@ class EndpointController extends AbstractController {
             return new JsonResponse($response);
         }
 
-        if(count($endpointRegistry->getEndpoints()) <= 0) {
+        if(count($endpointRegistry->getEndpoints($module)) <= 0) {
             $response = [
                 'error_code' => '404',
                 'error_msg' => 'module has no endpoints'
