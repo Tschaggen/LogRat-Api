@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use LogRat\Core\Event\RegisterEndpointEvent;
-use App\Service\ModuleRegistry;
 use LogRat\Core\Event\RegisterModuleEvent;
+use LogRat\Core\Service\EndpointRegistry;
+use LogRat\Core\Service\ModuleRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,54 +14,40 @@ use Symfony\Component\Routing\Annotation\Route;
 class EndpointController extends AbstractController {
 
     #[Route('/{module}/{endpoint}')]
-    function endpoint(ModuleRegistry $moduleRegistry, string $module, string $endpoint) : JsonResponse {
-
-        $dispatcher = new EventDispatcher();
+    function endpoint(EventDispatcher $eventDispatcher,ModuleRegistry $moduleRegistry,EndpointRegistry $endpointRegistry, string $module, string $endpoint) : JsonResponse {
 
         $registerModuleEvent = new RegisterEndpointEvent($moduleRegistry);
-        $dispatcher->dispatch($registerModuleEvent, RegisterModuleEvent::NAME);
+        $eventDispatcher->dispatch($registerModuleEvent, RegisterModuleEvent::NAME);
 
-        $registerEndpointEvent = new RegisterEndpointEvent($moduleRegistry);
-        $dispatcher->dispatch($registerEndpointEvent, RegisterEndpointEvent::NAME);
+        $registerEndpointEvent = new RegisterEndpointEvent($endpointRegistry;
+        $eventDispatcher->dispatch($registerEndpointEvent, RegisterEndpointEvent::NAME);
 
-        $resonse = null;
-
-        $moduleRegistry->addModule('test');
-        $moduleRegistry->addEndpoint('test',[
-            'endpoint' => 'sex',
-            'callback' => ahh
-        ]);
-
-        var_dump($moduleRegistry->getEndpoints());
+        $response = null;
 
         if(!in_array($module,$moduleRegistry->getModules())) {
-            $resonse = [
+            $response = [
                 'error_code' => '404',
                 'error_msg' => 'module not found'
             ];
-            return new JsonResponse($resonse);
+            return new JsonResponse($response);
         }
 
-        if(!array_key_exists($module,$moduleRegistry->getEndpoints())) {
-            $resonse = [
+        if(count($endpointRegistry->getEndpoints()) <= 0) {
+            $response = [
                 'error_code' => '404',
                 'error_msg' => 'module has no endpoints'
             ];
-            return new JsonResponse($resonse);
+            return new JsonResponse($response);
         }
 
-        if(!in_array($endpoint,$moduleRegistry->getEndpoints()[$module])) {
-            $resonse = [
+        if(!in_array($endpoint,$endpointRegistry->getEndpoints($module))) {
+            $response = [
                 'error_code' => '404',
                 'error_msg' => 'endpoint not found'
             ];
-            return new JsonResponse($resonse);
+            return new JsonResponse($response);
         }
 
-        return new JsonResponse($resonse);
+        return new JsonResponse($response);
     }
-}
-
-function ahh() {
-
 }

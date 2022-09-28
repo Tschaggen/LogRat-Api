@@ -1,8 +1,8 @@
 {
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/Tschaggen/LogRat-Core.git"
+            "type": "path",
+            "url": "../LogRat-Core"
         }
     ],
 
@@ -17,7 +17,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
-        "lograt/core": "dev-master",
+        "lograt/core": "*",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/event-dispatcher": "6.1.*",
