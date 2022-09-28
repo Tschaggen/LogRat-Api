@@ -16,7 +16,7 @@ class EndpointController extends AbstractController {
     #[Route('/{module}/{endpoint}')]
     function endpoint(EventDispatcher $eventDispatcher,ModuleRegistry $moduleRegistry,EndpointRegistry $endpointRegistry, string $module, string $endpoint) : JsonResponse {
 
-        $registerModuleEvent = new RegisterEndpointEvent($moduleRegistry);
+        $registerModuleEvent = new RegisterEndpointEvent($endpointRegistry);
         $eventDispatcher->dispatch($registerModuleEvent, RegisterModuleEvent::NAME);
 
         $registerEndpointEvent = new RegisterEndpointEvent($endpointRegistry);
