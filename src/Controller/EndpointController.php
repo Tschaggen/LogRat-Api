@@ -84,7 +84,7 @@ class EndpointController extends AbstractController {
             return new JsonResponse($response);
         }
 
-        if($options['security_level'] !== $userHandler->getSecurityLevel() ) {
+        if($options['security_level'] >= $userHandler->getSecurityLevel() ) {
             $response = [
                 'error_code' => 401,
                 'error_msg' => 'User security level is to low'
@@ -95,7 +95,7 @@ class EndpointController extends AbstractController {
 
         if(array_key_exists('callback',$options)) {
             $response = $this->forward($endpointRegistry->getEndpointData($module, $endpoint)['callback'], []);
-            return $response;
+            return new JsonResponse($response->getContent(),200,[],true);
         }
         else {
             $response = [

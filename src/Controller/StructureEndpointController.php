@@ -18,6 +18,6 @@ class StructureEndpointController
         }
 
 
-        return new JsonResponse();
+        return new JsonResponse($response);
     }
 }

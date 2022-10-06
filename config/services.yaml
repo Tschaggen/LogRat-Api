@@ -30,3 +30,5 @@ services:
     App\EventSubscriber\RegisterCoreEndpointsSubscriber:
         tags:
             - { name: kernel.event_listener, event: lograt.core.endpoint.register}
+    App\Controller\StructureEndpointController:
+        tags: ['controller.service_arguments']
