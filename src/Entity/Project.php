@@ -18,7 +18,7 @@ class Project
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'projects')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
     private Collection $users;
 
     #[ORM\Column]

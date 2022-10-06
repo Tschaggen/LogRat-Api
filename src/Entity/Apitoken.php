@@ -18,7 +18,7 @@ class Apitoken
 
     #[ORM\ManyToOne(inversedBy: 'apitokens')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $users = null;
+    private ?User $users = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;

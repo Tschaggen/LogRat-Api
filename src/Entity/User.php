@@ -34,6 +34,9 @@ class User
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Apitoken::class, orphanRemoval: true)]
     private Collection $apitokens;
 
+    #[ORM\Column]
+    private ?int $Security_Level = null;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -146,6 +149,18 @@ class User
                 $apitoken->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSecurityLevel(): ?int
+    {
+        return $this->Security_Level;
+    }
+
+    public function setSecurityLevel(int $Security_Level): self
+    {
+        $this->Security_Level = $Security_Level;
 
         return $this;
     }
