@@ -51,7 +51,7 @@ class UserSecCommand extends Command
 
             return Command::FAILURE;
         }
-        if($sec > 5 ||$sec < 0) {
+        if($sec > 4 ||$sec < 0) {
             $io->warning('security level out of bounds');
 
             return Command::FAILURE;

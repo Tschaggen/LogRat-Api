@@ -12,8 +12,7 @@ class RegisterCoreModuleSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
-        return [
-        ];
+        return [];
     }
 
     public function onLogRatCoreModuleRegister(RegisterModuleEvent $event)

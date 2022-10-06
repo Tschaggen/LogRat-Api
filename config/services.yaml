@@ -27,3 +27,6 @@ services:
     App\EventSubscriber\RegisterCoreModuleSubscriber:
         tags:
             - { name: kernel.event_listener, event: lograt.core.module.register}
+    App\EventSubscriber\RegisterCoreEndpointsSubscriber:
+        tags:
+            - { name: kernel.event_listener, event: lograt.core.endpoint.register}
